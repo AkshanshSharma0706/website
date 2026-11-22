@@ -1,0 +1,106 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>PathFinder – Career Guide for Students</title>
+<style>
+:root{--bg:#f5f7fc;--card:#fff;--ink:#0f1b3d;--mut:#5b6785;--line:#dbe2f0;--acc:#f2a93b;--on:#0f1b3d;--onfg:#fff}
+[data-theme=dark]{--bg:#0b1226;--card:#141d38;--ink:#eaf0ff;--mut:#9aa8cc;--line:#25314f;--on:#f2a93b;--onfg:#0b1226}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font:16px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);background:var(--bg)}
+h1,h2,h3{font-family:Georgia,serif;line-height:1.15;margin:0}h3{font-size:1.1rem;margin:18px 0 6px}a{color:inherit}button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--acc);outline-offset:2px}.w{max-width:1040px;margin:auto;padding:0 5vw}
+nav{position:sticky;top:0;z-index:20;backdrop-filter:blur(12px);background:color-mix(in srgb,var(--bg) 82%,transparent);border-bottom:1px solid var(--line)}
+nav .w{display:flex;align-items:center;gap:18px;height:60px}nav b{font:700 1.3rem Georgia,serif;margin-right:auto}nav a{text-decoration:none;color:var(--mut);font-size:.95rem}nav a:hover{color:var(--ink)}
+.ic{border:1px solid var(--line);background:var(--card);border-radius:99px;padding:4px 11px}
+.hero{padding:72px 0 36px;background:radial-gradient(620px 300px at 85% 0,color-mix(in srgb,var(--acc) 28%,transparent),transparent)}
+h1{font-size:clamp(2.3rem,7vw,4.3rem);max-width:15ch}.lead{font-size:1.15rem;color:var(--mut);max-width:52ch;margin:18px 0 26px}
+.btn{border:0;background:var(--on);color:var(--onfg);padding:12px 24px;border-radius:12px;font-weight:600;text-decoration:none;display:inline-block;margin:0 8px 8px 0}.btn.o{background:none;color:var(--ink);border:1.5px solid var(--line)}
+.stats{display:flex;gap:36px;margin-top:34px;flex-wrap:wrap}.stats b{font:700 2rem Georgia,serif;display:block}.stats span{color:var(--mut);font-size:.9rem}
+section{padding:48px 0}h2{font-size:clamp(1.6rem,4vw,2.3rem);margin-bottom:8px}.sub{color:var(--mut);margin:0 0 22px}
+.box{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px}
+.opt{display:block;width:100%;text-align:left;margin:9px 0;padding:13px 16px;border:1.5px solid var(--line);background:var(--bg);border-radius:12px}.opt:hover{border-color:var(--acc)}
+#prog{height:6px;border-radius:9px;background:var(--line);margin-bottom:18px;overflow:hidden}#bar{height:100%;width:0;background:var(--acc);transition:width .3s}
+.bar{display:grid;grid-template-columns:130px 1fr 44px;gap:10px;align-items:center;margin:8px 0}.bar i{height:10px;background:var(--line);border-radius:9px;overflow:hidden}.bar u{display:block;height:100%;background:var(--acc)}.bar em{font-style:normal;color:var(--mut)}
+.tools{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:16px}#s{flex:1;min-width:200px;padding:10px 14px;border:1.5px solid var(--line);border-radius:12px;background:var(--card);color:var(--ink);font:inherit}
+.chips button,.tag{border:1px solid var(--line);background:var(--card);border-radius:99px;padding:3px 13px;margin:0 6px 6px 0;font-size:.9rem;display:inline-block;text-decoration:none}.chips .on{background:var(--on);color:var(--onfg);border-color:var(--on)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:16px}
+.card{text-align:left;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px}.card:hover{border-color:var(--acc)}.card .em{font-size:1.9rem}.card h3{margin:8px 0 4px}.card p{margin:0 0 8px;color:var(--mut);font-size:.94rem}.card small{color:var(--mut)}
+dialog{width:min(640px,92vw);max-height:88vh;border:1px solid var(--line);border-radius:20px;background:var(--card);color:var(--ink);padding:0}dialog::backdrop{background:#0009}#mb{padding:26px}
+.tl{list-style:none;padding:0;margin:8px 0;counter-reset:s}.tl li{counter-increment:s;position:relative;padding:2px 0 12px 38px}.tl li:before{content:counter(s);position:absolute;left:0;top:0;width:26px;height:26px;border-radius:50%;background:var(--acc);color:#0f1b3d;font-weight:700;text-align:center;line-height:26px;font-size:.85rem}
+.co{background:color-mix(in srgb,var(--acc) 20%,var(--card))!important}.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.fab{position:fixed;right:16px;bottom:16px;z-index:30;background:var(--acc);color:#0f1b3d;border:0;border-radius:99px;padding:13px 20px;font-weight:700;box-shadow:0 6px 20px #0004}
+#box{display:none;position:fixed;right:16px;bottom:72px;z-index:30;width:min(380px,calc(100vw - 32px));height:min(520px,72vh);background:var(--card);border:1px solid var(--line);border-radius:18px;flex-direction:column;box-shadow:0 12px 40px #0005;overflow:hidden}#box.open{display:flex}
+#box header{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;background:var(--on);color:var(--onfg);font-weight:700}#box header button{background:none;border:0;color:inherit}
+#log{flex:1;overflow:auto;padding:12px}.m{margin:6px 0;padding:8px 12px;border-radius:12px;max-width:90%;white-space:pre-wrap}.me{background:var(--on);color:var(--onfg);margin-left:auto}.bot{background:var(--bg)}
+#qk{padding:0 12px}#qk button{border:1px solid var(--line);background:var(--bg);border-radius:99px;padding:2px 10px;margin:0 4px 6px 0;font-size:.82rem}
+#f{display:flex;gap:6px;padding:10px;border-top:1px solid var(--line)}#q{flex:1;padding:9px 12px;border:1.5px solid var(--line);border-radius:10px;font:inherit;background:var(--bg);color:var(--ink)}#f button{border:0;background:var(--on);color:var(--onfg);border-radius:10px;padding:0 16px;font-weight:600}
+footer{padding:30px 0 90px;color:var(--mut);font-size:.9rem;border-top:1px solid var(--line)}@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style></head><body>
+<nav><div class="w"><b>PathFinder</b><a href="#quiz">Quiz</a><a href="#explore">Careers</a><a href="#guide">By stage</a><a href="#res">Resources</a><button class="ic" id="th" aria-label="Toggle dark mode"></button></div></nav>
+<header class="hero"><div class="w"><h1>Find a career that fits you.</h1><p class="lead">Take a 5-question quiz, explore career roadmaps, see which companies hire, and ask an AI counsellor anything. Built for students in India.</p>
+<a class="btn" href="#quiz">Start the quiz</a><a class="btn o" href="#explore">Browse careers</a><div class="stats" id="st"></div></div></header>
+<main class="w">
+<section id="quiz"><h2>Career interest quiz</h2><p class="sub">Pick the option that sounds most like you.</p><div class="box"><div id="prog"><div id="bar"></div></div><div id="qa"></div></div></section>
+<section id="explore"><h2>Explore careers</h2><p class="sub">Open a career to see its roadmap, hiring companies and where to learn.</p><div class="tools"><input id="s" placeholder="Search careers or skills" aria-label="Search careers"></div><div class="chips" id="chips"></div><div class="grid" id="grid"></div></section>
+<section id="guide"><h2>Where are you now?</h2><p class="sub">A quick next step for each stage.</p><div class="chips" id="stg"></div><div class="box" id="stx"></div></section>
+<section id="res"><h2>Platforms that can help</h2><p class="sub">Find internships, jobs and free courses.</p><div class="two" id="rs"></div></section>
+</main>
+<footer><div class="w">Guidance here is general. Check exams, fees and company openings on official websites. Company names are examples, not guarantees of jobs.</div></footer>
+<dialog id="m"><div id="mb"></div><div style="padding:0 26px 22px"><button class="btn" id="sv"></button><button class="btn o" id="ai">Ask AI about this</button><button class="btn o" id="x">Close</button></div></dialog>
+<button class="fab" id="fab" aria-expanded="false">Ask AI counsellor</button>
+<div id="box" role="dialog" aria-label="AI career counsellor"><header>AI career counsellor<button id="cx" aria-label="Close chat">✕</button></header>
+<div id="log"><div class="m bot">Hi! Ask me about careers, courses, exams or skills.</div></div><div id="qk"></div>
+<form id="f"><input id="q" placeholder="Type your question" aria-label="Your question" autocomplete="off"><button>Send</button></form></div>
+<script>
+const $=s=>document.querySelector(s),T={tech:"Technology",analytical:"Analytical",creative:"Creative",people:"People-focused"},K=Object.keys(T);
+const C=[
+{n:"Software Developer",i:"💻",t:"tech",d:"Builds apps, websites and systems.",s:["Programming","Data structures","Git"],p:["Learn one language (Python or JavaScript)","Build 3 projects and publish them on GitHub","Practise DSA and do an internship","Apply for junior developer roles"],co:["TCS","Infosys","Wipro","Google","Microsoft","Flipkart","Razorpay"],ln:["freeCodeCamp","NPTEL","Coursera","LeetCode"]},
+{n:"AI / ML Engineer",i:"🤖",t:"tech",d:"Creates models that learn from data.",s:["Python","Maths & statistics","ML libraries"],p:["Learn Python, statistics and linear algebra","Take an ML course and finish small projects","Build one end-to-end project with a live demo","Apply for ML internships or research roles"],co:["Google","Microsoft","NVIDIA","Amazon","IBM","Fractal Analytics"],ln:["Coursera","NPTEL","Kaggle","fast.ai"]},
+{n:"Data Analyst",i:"📊",t:"analytical",d:"Turns data into decisions with charts and reports.",s:["Excel","SQL","Visualisation"],p:["Learn Excel and SQL","Learn Power BI or Tableau","Analyse public datasets and publish a portfolio","Apply for analyst internships"],co:["Deloitte","Accenture","Zomato","Flipkart","Mu Sigma","Fractal Analytics"],ln:["Coursera","Kaggle","Microsoft Learn","NPTEL"]},
+{n:"Chartered Accountant",i:"🧾",t:"analytical",d:"Handles audit, tax and financial planning.",s:["Accounting","Taxation","Attention to detail"],p:["Register for CA Foundation after Class 12","Clear Intermediate and complete articleship","Clear the Final exam","Join a firm or company, or start a practice"],co:["Deloitte","EY","KPMG","PwC","Grant Thornton"],ln:["ICAI (official body)","NPTEL","Khan Academy"]},
+{n:"UI/UX Designer",i:"🎨",t:"creative",d:"Designs apps and sites that are easy to use.",s:["Design tools","User research","Visual design"],p:["Learn design basics and Figma","Redesign 3 existing apps as case studies","Build a portfolio site","Apply for design internships"],co:["Adobe","Google","Swiggy","Razorpay","Zoho"],ln:["Figma Learn","Coursera","Interaction Design Foundation"]},
+{n:"Digital Marketer",i:"📣",t:"creative",d:"Grows brands through content, social and ads.",s:["Writing","SEO","Analytics"],p:["Learn SEO, social media and content basics","Run a small page or blog to practise","Earn a free analytics or ads certificate","Apply for marketing internships"],co:["Ogilvy","Dentsu","WPP","Google","Zomato","Nykaa"],ln:["Google Skillshop","HubSpot Academy","Meta Blueprint"]},
+{n:"Doctor",i:"🩺",t:"people",d:"Diagnoses and treats patients.",s:["Biology","Empathy","Long-term study"],p:["Study PCB in Class 11-12","Clear NEET-UG and join an MBBS college","Complete your internship","Specialise through NEET-PG"],co:["AIIMS","Apollo Hospitals","Fortis","Max Healthcare","Manipal Hospitals"],ln:["NMC (official body)","PhysicsWallah","Khan Academy"]},
+{n:"Teacher / Counsellor",i:"🎓",t:"people",d:"Guides learners and helps them grow.",s:["Communication","Patience","Subject knowledge"],p:["Choose a subject and complete your degree","Complete B.Ed or a counselling course","Clear teaching eligibility exams like CTET","Start in a school, college or coaching centre"],co:["Teach For India","PhysicsWallah","Unacademy","Vedantu","Kendriya Vidyalaya"],ln:["SWAYAM","DIKSHA","Coursera"]}];
+const Q=[["Which task sounds most fun?","Fix a bug in an app|Study a table of sales numbers|Design a poster|Help a friend solve a problem"],["Pick a weekend project","Build a small game|Track cricket stats|Make a short video|Volunteer at a school"],["Friends say you're good at","Figuring out how things work|Spotting patterns|Coming up with ideas|Listening"],["Favourite subject area","Computers or physics|Maths or economics|Art or languages|Biology or social science"],["You'd rather work","On a laptop, building things|With data and reports|On creative briefs|Directly with people"]];
+const S={"Class 10":"Choose a stream: Science (PCM or PCB), Commerce or Arts. Take the quiz, talk to teachers, and remember you can still change direction later.","Class 12":"Check entrance exams early: JEE for engineering, NEET for medicine, CUET for central universities, CA Foundation for accounting. Confirm dates on official sites.","College":"Build 2-3 projects, apply for internships on Internshala or LinkedIn, join a club, and keep a one-page resume ready."};
+const R={"Jobs and internships":[["Internshala","internshala.com"],["Naukri","naukri.com"],["LinkedIn","linkedin.com"],["Indeed","indeed.com"],["Wellfound","wellfound.com"]],"Free learning":[["Coursera","coursera.org"],["NPTEL","nptel.ac.in"],["SWAYAM","swayam.gov.in"],["freeCodeCamp","freecodecamp.org"],["Khan Academy","khanacademy.org"]]};
+let sv=new Set(),f="all",i=0,sc={tech:0,analytical:0,creative:0,people:0},cur=0;
+try{sv=new Set(JSON.parse(localStorage.getItem("pf-saved")||"[]"))}catch(e){}
+const keep=()=>{try{localStorage.setItem("pf-saved",JSON.stringify([...sv]))}catch(e){}},tags=(a,c="")=>a.map(x=>`<span class="tag ${c}">${x}</span>`).join("");
+let th="light";try{th=localStorage.getItem("pf-theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light")}catch(e){}
+function setTh(t){th=t;document.documentElement.dataset.theme=t;$("#th").textContent=t=="dark"?"☀️":"🌙";try{localStorage.setItem("pf-theme",t)}catch(e){}}
+$("#th").onclick=()=>setTh(th=="dark"?"light":"dark");setTh(th);
+$("#st").innerHTML=[[C.length,"careers"],[new Set(C.flatMap(c=>c.co)).size,"example companies"],["24/7","AI counsellor"]].map(a=>`<div><b>${a[0]}</b><span>${a[1]}</span></div>`).join("");
+function ask(){$("#bar").style.width=i/Q.length*100+"%";
+ if(i>=Q.length){const r=K.slice().sort((a,b)=>sc[b]-sc[a]);
+  $("#qa").innerHTML=`<h3 style="margin-top:0">Your top match: ${T[r[0]]}</h3>`+r.map(k=>`<div class="bar"><span>${T[k]}</span><i><u style="width:${sc[k]/Q.length*100}%"></u></i><em>${Math.round(sc[k]/Q.length*100)}%</em></div>`).join("")+`<p class="sub" style="margin:14px 0 8px">Start with these careers:</p>`+C.map((c,j)=>c.t==r[0]?`<button class="tag" data-o="${j}">${c.i} ${c.n}</button>`:"").join("")+`<p><button class="btn o" id="again">Retake quiz</button></p>`;
+  $("#again").onclick=()=>{i=0;sc={tech:0,analytical:0,creative:0,people:0};ask()};return}
+ $("#qa").innerHTML=`<h3 style="margin-top:0">${i+1}. ${Q[i][0]}</h3>`;Q[i][1].split("|").forEach((o,j)=>{const b=document.createElement("button");b.className="opt";b.textContent=o;b.onclick=()=>{sc[K[j]]++;i++;ask()};$("#qa").append(b)})}
+function list(){const q=$("#s").value.toLowerCase();
+ $("#chips").innerHTML="";[["all","All"],["saved","Saved ("+sv.size+")"],...K.map(k=>[k,T[k]])].forEach(([k,l])=>{const b=document.createElement("button");b.textContent=l;b.className=f==k?"on":"";b.onclick=()=>{f=k;list()};$("#chips").append(b)});
+ const r=C.map((c,j)=>[c,j]).filter(([c,j])=>(f=="all"||(f=="saved"?sv.has(j):c.t==f))&&(c.n+c.s.join()).toLowerCase().includes(q));
+ $("#grid").innerHTML=r.length?r.map(([c,j])=>`<button class="card" data-o="${j}"><span class="em">${c.i}</span><h3>${c.n}</h3><p>${c.d}</p><small>${T[c.t]}${sv.has(j)?" ♥":""}</small></button>`).join(""):`<p class="sub">Nothing here yet. Try another search or filter.</p>`}
+$("#s").oninput=list;
+function openC(j){cur=j;const c=C[j];$("#mb").innerHTML=`<h2>${c.i} ${c.n}</h2><p class="sub">${c.d}</p><h3>Skills to build</h3>${tags(c.s)}<h3>Roadmap</h3><ol class="tl">${c.p.map(x=>`<li>${x}</li>`).join("")}</ol><h3>Companies that hire for this</h3>${tags(c.co,"co")}<h3>Where to learn</h3>${tags(c.ln)}<p class="sub" style="margin-top:12px;font-size:.88rem">Examples only. Check each company's careers page for current openings.</p>`;$("#sv").textContent=sv.has(j)?"♥ Saved":"♡ Save";$("#m").showModal()}
+document.addEventListener("click",e=>{const b=e.target.closest("[data-o]");if(b)openC(+b.dataset.o)});
+$("#m").onclick=e=>{if(e.target==$("#m"))$("#m").close()};$("#x").onclick=()=>$("#m").close();
+$("#sv").onclick=()=>{sv.has(cur)?sv.delete(cur):sv.add(cur);keep();$("#sv").textContent=sv.has(cur)?"♥ Saved":"♡ Save";list()};
+$("#ai").onclick=()=>{$("#m").close();send(`How do I become a ${C[cur].n}? Give me a simple roadmap for a student in India.`)};
+$("#stg").innerHTML=Object.keys(S).map((k,j)=>`<button data-k="${k}" class="${j?"":"on"}">${k}</button>`).join("");$("#stx").textContent=S["Class 10"];
+$("#stg").onclick=e=>{const k=e.target.dataset.k;if(!k)return;$("#stx").textContent=S[k];[...$("#stg").children].forEach(b=>b.className=b==e.target?"on":"")};
+$("#rs").innerHTML=Object.entries(R).map(([h,a])=>`<div class="box"><h3 style="margin-top:0">${h}</h3>${a.map(([n,u])=>`<a class="tag" href="https://${u}" target="_blank" rel="noopener">${n}</a>`).join("")}</div>`).join("");
+ask();list();
+/* Chatbot: sends history to /api/chat (serverless function that calls the AI API) */
+const H=[];
+function add(r,t){const d=document.createElement("div");d.className="m "+r;d.textContent=t;$("#log").append(d);$("#log").scrollTop=1e9;return d}
+const tog=o=>{$("#box").classList.toggle("open",o);$("#fab").setAttribute("aria-expanded",o);if(o)$("#q").focus()};
+$("#fab").onclick=()=>tog(!$("#box").classList.contains("open"));$("#cx").onclick=()=>tog(false);
+$("#qk").innerHTML=["Which stream after Class 10?","How do I start learning to code?","What can I do after Class 12 Commerce?"].map(x=>`<button type="button">${x}</button>`).join("");
+$("#qk").onclick=e=>{if(e.target.tagName=="BUTTON")send(e.target.textContent)};
+async function send(q){q=q.trim();tog(true);
+ if(!q)return add("bot","Type a question about careers first.");
+ if(q.length>500)return add("bot","Please keep your question under 500 characters.");
+ add("me",q);H.push({role:"user",content:q});const w=add("bot","Thinking…");
+ try{const r=await fetch("/api/chat",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({messages:H})});
+  const d=await r.json().catch(()=>({}));if(!r.ok||!d.reply)throw new Error(d.error||"server not reachable");
+  w.textContent=d.reply;H.push({role:"assistant",content:d.reply})}
+ catch(err){w.textContent="Could not get an answer ("+err.message+"). Please try again in a moment.";H.pop()}}
+$("#f").onsubmit=e=>{e.preventDefault();const v=$("#q").value;$("#q").value="";send(v)};
+</script></body></html>
